@@ -1,0 +1,33 @@
+POST http://localhost:3000/register
+Content-Type : application/json
+
+{
+    "name":"Bhavesh",
+    "email":"Bhaves1h@test.com",
+    "password":"lomienl",
+    "gender":"Famele",
+    "age":19
+}
+###
+POST http://localhost:3000/login
+Content-Type : application/json
+
+{
+    "email":"Bhaves1h@test.com",
+    "password":"lomienl"
+}
+
+
+###
+POST http://localhost:3000/reservation
+Content-Type: application/json
+Cookie: access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTUwNDhiNzcxMjkwNmFhMjA3MTdlNiIsImVtYWlsIjoiQmhhdmVzMWhAdGVzdC5jb20iLCJuYW1lIjoiQmhhdmVzaCIsImlhdCI6MTc0MzE1MDY5OCwiZXhwIjoxNzQzMTU0Mjk4fQ.0dYcdhojB97avxN2DIVQDBstNlGDQuJnnSKbiSIMwnQ
+
+{
+    "date": "2025-04-01",
+    "time": "12:33",
+    "status": "confirmed"
+}
+
+###
+GET http://localhost:3000/userReservation/67e5048b7712906aa20717e6
