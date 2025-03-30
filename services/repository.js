@@ -54,12 +54,12 @@ class ReservationRepository {
         const userExists = await User.findById(userID);
         //buscamos userID en la BD User, si no existe se enviara un error
         if (!userExists) throw new Error('User not found')
-            
+
         const startTime = time.slice(0, 2) + ":00"; // obtenemos la hora sin minutos y agregamos 00
         const endTime = time.slice(0, 2) + ":59"; // Convierte "12:32" en "12:59"
 
         const count = await userReservation.countDocuments({ userID, date, time: { $gte: startTime, $lte: endTime }, status: "confirmed" })
-      //si quitamos userID secontara todas las reservas en general
+        //si quitamos userID secontara todas las reservas en general
         //validacion de datos userid si existe, data y time
         Validation.countReservations(count)
         Validation.validateID(userID)
@@ -76,6 +76,16 @@ class ReservationRepository {
         );
         await newReservation.save() //esperamos y guardamos
         return newReservation
+    }
+
+    static async cancel(id) {
+        //esperamos un ID de mongo
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            throw new Error(`Invalid reservation ID: ${id}`);
+        }
+        //creamoms variable para buscar y eliminar el ID
+        const deletedReservationID = await userReservation.findByIdAndDelete(id)
+        return deletedReservationID
     }
 }
 

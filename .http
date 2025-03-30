@@ -2,32 +2,35 @@ POST http://localhost:3000/register
 Content-Type : application/json
 
 {
-    "name":"Bhavesh",
-    "email":"Bhaves1h@test.com",
-    "password":"lomienl",
+    "name":"Bhavesh12356",
+    "email":"Bhaves1h1156@test.com",
+    "password":"lomien123l",
     "gender":"Famele",
-    "age":19
+    "age":20
 }
 ###
 POST http://localhost:3000/login
 Content-Type : application/json
 
 {
-    "email":"Bhaves1h@test.com",
-    "password":"lomienl"
+    "email":"Bhaves1h1156@test.com",
+    "password":"lomien123l"
 }
 
 
 ###
 POST http://localhost:3000/reservation
 Content-Type: application/json
-Cookie: access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTUwNDhiNzcxMjkwNmFhMjA3MTdlNiIsImVtYWlsIjoiQmhhdmVzMWhAdGVzdC5jb20iLCJuYW1lIjoiQmhhdmVzaCIsImlhdCI6MTc0MzE1MDY5OCwiZXhwIjoxNzQzMTU0Mjk4fQ.0dYcdhojB97avxN2DIVQDBstNlGDQuJnnSKbiSIMwnQ
+Cookie: access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZThmZTY3OTM0Y2U3MjU2YzZhNjE2YiIsImVtYWlsIjoiQmhhdmVzMWgxMTU2QHRlc3QuY29tIiwibmFtZSI6IkJoYXZlc2gxMjM1NiIsImlhdCI6MTc0MzMyMjc1MiwiZXhwIjoxNzQzMzI2MzUyfQ.CNC0cJMFTNWcvaSp2EeEhSckqnwDisMMRxPpHy-T6Y4
 
 {
-    "date": "2025-04-01",
+    "date": "2030-04-01",
     "time": "12:33",
     "status": "confirmed"
 }
 
 ###
-GET http://localhost:3000/userReservation/67e5048b7712906aa20717e6
+GET http://localhost:3000/userReservation/67e8fe67934ce7256c6a616b
+
+###
+GET http://localhost:3000/cancelReservation/67e8fe95934ce7256c6a6170
