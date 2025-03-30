@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-
+//creamos el schema para reservaciones, con el id del anterior schema de user
 const reservationSchema = new Schema({
     userID:{ type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     date:{type:String, required:true},

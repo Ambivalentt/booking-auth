@@ -49,9 +49,10 @@ class UserRepository {
 
 class ReservationRepository {
     static MAX_RESERVATIONS_PER_HOUR = 7 // Maximo de reservas por hora;
-    static async create({ userID, date, time, status }) {
+    static async create({ userID, date, time, status }) { //funcionar para crear reservas con los campos requeridos
 
         const userExists = await User.findById(userID);
+        //buscamos userID en la BD User, si no existe se enviara un error
         if (!userExists) throw new Error('User not found')
             
         const startTime = time.slice(0, 2) + ":00"; // obtenemos la hora sin minutos y agregamos 00
@@ -59,13 +60,13 @@ class ReservationRepository {
 
         const count = await userReservation.countDocuments({ userID, date, time: { $gte: startTime, $lte: endTime }, status: "confirmed" })
       //si quitamos userID secontara todas las reservas en general
-
+        //validacion de datos userid si existe, data y time
         Validation.countReservations(count)
         Validation.validateID(userID)
         Validation.validateDate(date)
         Validation.validateTime(time)
 
-        const newReservation = new userReservation(
+        const newReservation = new userReservation( //creamos una nueva reserva en la BD mongo pasandole el schmea y los datos necesarios
             {
                 userID,
                 date,
@@ -73,12 +74,12 @@ class ReservationRepository {
                 status
             }
         );
-        await newReservation.save()
+        await newReservation.save() //esperamos y guardamos
         return newReservation
     }
 }
 
-
+//validacion de datos de los usuarios y reservas
 class Validation {
     static name(name) {
         if (name.length < 3) throw new Error('Name must be at least 3 characters long')
